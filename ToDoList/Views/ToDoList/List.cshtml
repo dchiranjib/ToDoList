@@ -1,0 +1,65 @@
+﻿@using ToDoList.Infrastructure.Data.Entities
+@model IEnumerable<ToDoItem>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+@using(Html.BeginForm("AddItem", "ToDoList", FormMethod.Post)){
+<table>
+    <tr>
+        <td>Description:</td>
+        <td><input type="text" name="Description" /></td>
+    </tr>
+</table>
+<input type="submit" name="Save" />
+}
+
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Description
+            </th>
+            <th>
+                Last updated
+            </th>
+            <th>
+                Assigned to
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.UpdatedOn
+                </td>
+                <td>
+                    @item.User?.UserName
+                </td>
+                <td>
+                    @(item.Done == true ? @Html.Raw("Done") : @Html.Raw(""))
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemoveItem", "ToDoList", FormMethod.Post))
+                    {
+                        <input type="hidden" name="id" value="@item.Id">
+                        <input type="submit" name="delete" value="Delete">
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+﻿@using ToDoList.Infrastructure.Data.Entities
+@model User
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    @using (Html.BeginForm("Index", "ToDoList", FormMethod.Post))
+    {
+            <h1 class="display-4">Login</h1>
+            <table>
+                <tr>
+                    <td>Username:</td>
+                    <td>@Html.TextBoxFor(m => m.UserName)</td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                    <td>@Html.TextBoxFor(m => m.Password, new { @type = "password" })</td>
+            </tr>
+            </table>
+            <input type="submit" name="Login" />
+    }
+</div>
