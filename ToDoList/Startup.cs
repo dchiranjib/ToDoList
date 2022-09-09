@@ -28,7 +28,9 @@ namespace ToDoList
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<ToDoListDbContext>();
+            //services.AddDbContext<ToDoListDbContext>(options => options.UseSqlite("Data Source=TestDatabase.db"));
+
+            services.AddDbContext<ToDoListDbContext>(options => options.UseInMemoryDatabase("MockDB"));
 
             services.AddTransient<IToDoListRepository, ToDoListRepository>();
 

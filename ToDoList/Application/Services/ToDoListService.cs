@@ -51,6 +51,12 @@ namespace ToDoList.Application.Services
                 throw;
             }
         }
+
+        public void AddUser(User user)
+        {
+            _repository.Add(user);
+            _repository.SaveChanges();
+        }
     }
 
     public interface IToDoListService
@@ -61,6 +67,7 @@ namespace ToDoList.Application.Services
         ToDoItem GetToDoItemById(int id);
 
         void AddToDoItem(ToDoItem item);
-        void RemoveItem(IList<ToDoItem> items); 
+        void RemoveItem(IList<ToDoItem> items);
+        void AddUser(User user);
     }
 }
