@@ -15,7 +15,7 @@ namespace ToDoList.Application.Controllers
         private IToDoListService _toDoListService { get; }
         private readonly ILogger<ToDoListController> _logger;
 
-        public ToDoListController(IToDoListService toDoListService, ILogger<ToDoListController> logger = null)
+        public ToDoListController(IToDoListService toDoListService, ILogger<ToDoListController> logger)
         {
             _toDoListService = toDoListService;
             _logger = logger;

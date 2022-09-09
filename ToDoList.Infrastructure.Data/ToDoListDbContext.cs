@@ -14,9 +14,9 @@ namespace ToDoList.Infrastructure.Data
 {
     public class ToDoListDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {   
-            optionsBuilder.UseSqlite("Data Source=TestDatabase.db");
+        public ToDoListDbContext(DbContextOptions<ToDoListDbContext> options) : base(options)
+        {
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
